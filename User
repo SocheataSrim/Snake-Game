@@ -1,0 +1,17 @@
+class User {
+    private String name;
+    private String password;
+
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    // Other methods and getters/setters as needed
+
+    // You may also want to override equals and hashCode methods if you plan to compare users.
+}
