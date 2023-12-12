@@ -1,0 +1,27 @@
+import java.util.List;
+
+class Login {
+    private static List<User> users = Register.getUsers();
+
+    public static boolean loginUser(User user) {
+        for (User registeredUser : users) {
+            if (registeredUser.equals(user)) {
+                System.out.println("Login successful!");
+                return true;
+            }
+        }
+        System.out.println("Login failed!");
+        return false;
+    }
+
+    public static boolean VerifyUserName(String userName) {
+        for (User user : users) {
+            if (user.getName().equals(userName)) {
+                System.out.println("Username already exists!");
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
