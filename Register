@@ -1,0 +1,16 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Register {
+    private static List<User> users = new ArrayList<>();
+
+    public static void registerUser(String name, String password) {
+        User newUser = new User(name, password);
+        users.add(newUser);
+        System.out.println("User registered successfully!");
+    }
+
+    public static List<User> getUsers() {
+        return users;
+    }
+}
