@@ -8,46 +8,51 @@ public class SnakeGame {
         String tmpPassword;
         int choice;
         boolean isLogin = false;
-        User user = null;
+        RegisteredUser user = null;
 
         // Print out the registration/login screen
         System.out.println("1. Register");
         System.out.println("2. Login");
         System.out.println("3. Play as Unregistered User");
         System.out.println("other. Quit");
-        choice = sc.nextInt();
-        sc.nextLine(); // Consume the newline character
 
-        switch (choice) {
-            case 1:
-                do {
+        try {
+            choice = sc.nextInt();
+            sc.nextLine(); // Consume the newline character
+
+            switch (choice) {
+                case 1:
+                    do {
+                        System.out.println("Input name: ");
+                        tmpName = sc.nextLine();
+                    } while (Login.VerifyUserName(tmpName));
+
+                    System.out.println("Input password: ");
+                    tmpPassword = sc.nextLine();
+                    Register.registerUser(tmpName, tmpPassword);
+                    user = new RegisteredUser(tmpName, tmpPassword, "GeneratedRegistrationId");
+                    isLogin = true;
+                    break;
+                case 2:
+                    System.out.print("Input name: ");
+                    tmpName = sc.nextLine();
+                    System.out.print("Input password: ");
+                    tmpPassword = sc.nextLine();
+                    user = new RegisteredUser(tmpName, tmpPassword, null);
+                    isLogin = Login.loginUser(user);
+                    break;
+                case 3:
+                    System.out.println("Playing as Unregistered User");
                     System.out.println("Input name: ");
                     tmpName = sc.nextLine();
-                } while (Login.VerifyUserName(tmpName));
-
-                System.out.println("Input password: ");
-                tmpPassword = sc.nextLine();
-                Register.registerUser(tmpName, tmpPassword);
-                user = new RegisteredUser(tmpName, tmpPassword, "GeneratedRegistrationId"); // Assuming a default registration ID
-                isLogin = true;
-                break;
-            case 2:
-                System.out.print("Input name: ");
-                tmpName = sc.nextLine();
-                System.out.print("Input password: ");
-                tmpPassword = sc.nextLine();
-                user = new RegisteredUser(tmpName, tmpPassword, null); // Assuming null for registration ID
-                isLogin = Login.loginUser(user);
-                break;
-            case 3:
-                System.out.println("Playing as Unregistered User");
-                System.out.println("Input name: ");
-                tmpName = sc.nextLine();
-                user = new UnregisteredUser(tmpName, null); // Unregistered user without a password
-                isLogin = true;
-                break;
-            default:
-                break;
+                    user = new UnregisteredUser(tmpName);
+                    isLogin = true;
+                    break;
+                default:
+                    break;
+            }
+        } catch (java.util.InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number.");
         }
 
         sc.close();
@@ -60,4 +65,5 @@ public class SnakeGame {
         }
     }
 }
+
 
