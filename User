@@ -22,7 +22,7 @@ class User {
         return "User [name=" + name + ", password=" + password + "]";
     }
 
-    // You may also want to override equals and hashCode methods if you plan to compare users.
+    
 }
 
 class RegisteredUser extends User {
@@ -50,7 +50,7 @@ class UnregisteredUser extends User {
 
     @Override
     public String getPassword() {
-        return null; // Unregistered user has no password (this can be adjusted based on your requirements)
+        return null; // Unregistered user has no password 
     }
 
     @Override
