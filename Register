@@ -2,15 +2,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Register {
-    private static List<User> users = new ArrayList<>();
+    private static List<RegisteredUser> users = new ArrayList<>();
 
     public static void registerUser(String name, String password) {
-        User newUser = new User(name, password);
+        RegisteredUser newUser = new RegisteredUser(name, password, "GeneratedRegistrationId");
         users.add(newUser);
         System.out.println("User registered successfully!");
     }
 
-    public static List<User> getUsers() {
+    public static List<RegisteredUser> getUsers() {
         return users;
     }
 }
+
