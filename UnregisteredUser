@@ -1,11 +1,6 @@
-class UnregisteredUser extends User {
-    public UnregisteredUser(String name, String password) {
-        super(name, password); // Unregistered user can have a password (if provided), but it's not required
-    }
-
-    @Override
-    public String getPassword() {
-        return null; // Unregistered user has no password 
+class UnregisteredUser extends RegisteredUser {
+    public UnregisteredUser(String name) {
+        super(name, null, null); // Unregistered user without a password and registration ID
     }
 
     @Override
