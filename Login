@@ -1,10 +1,10 @@
 import java.util.List;
 
 class Login {
-    private static List<User> users = Register.getUsers();
+    private static List<RegisteredUser> users = Register.getUsers();
 
-    public static boolean loginUser(User user) {
-        for (User registeredUser : users) {
+    public static boolean loginUser(RegisteredUser user) {
+        for (RegisteredUser registeredUser : users) {
             if (registeredUser.equals(user)) {
                 System.out.println("Login successful!");
                 return true;
@@ -15,7 +15,7 @@ class Login {
     }
 
     public static boolean VerifyUserName(String userName) {
-        for (User user : users) {
+        for (RegisteredUser user : users) {
             if (user.getName().equals(userName)) {
                 System.out.println("Username already exists!");
                 return true;
@@ -24,4 +24,5 @@ class Login {
         return false;
     }
 }
+
 
