@@ -1,0 +1,17 @@
+class RegisteredUser extends User {
+    private String registrationId;
+
+    public RegisteredUser(String name, String password, String registrationId) {
+        super(name, password);
+        this.registrationId = registrationId;
+    }
+
+    public String getRegistrationId() {
+        return registrationId;
+    }
+
+    @Override
+    public String toString() {
+        return "RegisteredUser [name=" + getName() + ", password=" + getPassword() + ", registrationId=" + registrationId + "]";
+    }
+}
