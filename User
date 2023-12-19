@@ -11,7 +11,53 @@ class User {
         return name;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     // Other methods and getters/setters as needed
+
+    @Override
+    public String toString() {
+        return "User [name=" + name + ", password=" + password + "]";
+    }
 
     // You may also want to override equals and hashCode methods if you plan to compare users.
 }
+
+class RegisteredUser extends User {
+    private String registrationId;
+
+    public RegisteredUser(String name, String password, String registrationId) {
+        super(name, password);
+        this.registrationId = registrationId;
+    }
+
+    public String getRegistrationId() {
+        return registrationId;
+    }
+
+    @Override
+    public String toString() {
+        return "RegisteredUser [name=" + getName() + ", password=" + getPassword() + ", registrationId=" + registrationId + "]";
+    }
+}
+
+class UnregisteredUser extends User {
+    public UnregisteredUser(String name, String password) {
+        super(name, password); // Unregistered user can have a password (if provided), but it's not required
+    }
+
+    @Override
+    public String getPassword() {
+        return null; // Unregistered user has no password (this can be adjusted based on your requirements)
+    }
+
+    @Override
+    public String toString() {
+        return "UnregisteredUser [name=" + getName() + "]";
+    }
+}
+
+
+
