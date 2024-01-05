@@ -145,3 +145,4 @@ public class Game extends JFrame implements KeyListener {
         Game level1 = new Game(level, target, speed, width, height);
     }
 }
+
