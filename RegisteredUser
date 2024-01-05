@@ -1,28 +1,21 @@
-class RegisteredUser {
-    private String name;
-    private String password;
-    private String registrationId;
+import java.util.List;
 
-    public RegisteredUser(String name, String password, String registrationId) {
-        this.name = name;
-        this.password = password;
-        this.registrationId = registrationId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getRegistrationId() {
-        return registrationId;
+class RegisteredUser extends User {
+    public RegisteredUser(String name, String password) {
+        super(name, password);
     }
 
     @Override
-    public String toString() {
-        return "RegisteredUser [name=" + name + ", password=" + password + ", registrationId=" + registrationId + "]";
+    public boolean authenticate() {
+        List<RegisteredUser> users = Register.getUsers();
+        for (RegisteredUser registeredUser : users) {
+            if (registeredUser.getName().equals(name) && registeredUser.getPassword().equals(password)) {
+                System.out.println("Login successful!");
+                return true;
+            }
+        }
+        System.out.println("Login failed!");
+        return false;
     }
 }
+
