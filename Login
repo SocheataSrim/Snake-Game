@@ -3,15 +3,8 @@ import java.util.List;
 class Login {
     private static List<RegisteredUser> users = Register.getUsers();
 
-    public static boolean loginUser(RegisteredUser user) {
-        for (RegisteredUser registeredUser : users) {
-            if (registeredUser.equals(user)) {
-                System.out.println("Login successful!");
-                return true;
-            }
-        }
-        System.out.println("Login failed!");
-        return false;
+    public static boolean loginUser(User user) {
+        return user.authenticate();
     }
 
     public static boolean VerifyUserName(String userName) {
@@ -24,5 +17,7 @@ class Login {
         return false;
     }
 }
+
+
 
 
