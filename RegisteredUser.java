@@ -9,7 +9,7 @@ class RegisteredUser extends User {
     public boolean authenticate() {
         List<RegisteredUser> users = Register.getUsers();
         for (RegisteredUser registeredUser : users) {
-            if (registeredUser.getName().equals(name) && registeredUser.getPassword().equals(password)) {
+            if (registeredUser.getName().equals(getName()) && registeredUser.getPassword().equals(getPassword())) {
                 System.out.println("Login successful!");
                 return true;
             }
@@ -18,4 +18,3 @@ class RegisteredUser extends User {
         return false;
     }
 }
-

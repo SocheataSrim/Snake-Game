@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class SnakeGame {
@@ -14,9 +15,20 @@ public class SnakeGame {
         System.out.println("1. Register");
         System.out.println("2. Login");
         System.out.println("3. Play as Unregistered User");
-        System.out.println("other. Quit");
-        choice = sc.nextInt();
-        sc.nextLine(); // Consume the newline character
+        System.out.println("4. Quit");
+
+        // Input error handling
+        while (true) {
+            try {
+                System.out.print("Enter your option (1 - 4): ");
+                choice = sc.nextInt();
+                sc.nextLine(); // Consume the newline character
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input.");
+                sc.nextLine();
+            }
+        }
 
         switch (choice) {
             case 1:
@@ -43,7 +55,10 @@ public class SnakeGame {
                 System.out.print("Input name: ");
                 tmpName = sc.nextLine();
                 user = new UnregisteredUser(tmpName);
-                isLogin = true;
+                isLogin = Login.loginUser(user);
+                break;
+            case 4:
+                System.out.println("Thank you for playing.");
                 break;
             default:
                 break;

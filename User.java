@@ -1,6 +1,6 @@
 abstract class User {
-    protected String name;
-    protected String password;
+    private String name;
+    private String password;
 
     public User(String name, String password) {
         this.name = name;

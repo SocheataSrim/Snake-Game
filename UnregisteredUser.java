@@ -11,8 +11,6 @@ class UnregisteredUser extends User {
 
     @Override
     public void playGame() {
-        System.out.println(name + " is playing the game as an Unregistered User.");
+        System.out.println(getName() + " is playing the game as an Unregistered User.");
     }
 }
-
-

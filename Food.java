@@ -4,8 +4,8 @@ public class Food {
     // Attributes
     private int width;
     private int height;
-    public int foodX;
-    public int foodY;
+    private int foodX;
+    private int foodY;
     private String color;
 
     // Constructor

@@ -21,7 +21,7 @@ class Register {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(FILE_PATH + " does't exist.");
         }
     }
 
@@ -46,5 +46,3 @@ class Register {
         return users;
     }
 }
-
-
