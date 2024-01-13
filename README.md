@@ -60,13 +60,15 @@ When you have a RegisteredUser object and you call the authenticate method on it
 
 Polymorphism is refered to the concept of a function or method that can work with different types of data and objects. In the User class, we have an abstract authenticate method and an overridden toString method. The RegisteredUser class extends User and provides specific implementations for the authenticate method.
 
-    ```java
-    RegisteredUser registeredUser = new RegisteredUser(tmpName, tmpPassword);
-    boolean result = registeredUser.authenticate();
+- Example:
 
-    UnregisteredUser unregisteredUser = new UnregisteredUser(tmpName);
-    boolean result = unregisteredUser.authenticate();
-    ```
+  ```java
+  RegisteredUser registeredUser = new RegisteredUser(tmpName, tmpPassword);
+  boolean result = registeredUser.authenticate();
+
+  UnregisteredUser unregisteredUser = new UnregisteredUser(tmpName);
+  boolean result = unregisteredUser.authenticate();
+  ```
 
 ### Encapsulation:
 
@@ -76,39 +78,41 @@ All of our attributes in each classes are ** Private ** as they are the properti
 
 The User class is an abstract class with abstract methods, and RegisteredUser provides concrete implementations. In this case, in the RegisteredUser class, we extend the abstract class User and provide concrete implementations for the abstract methods (authenticate and playGame). The constructor of the RegisteredUser class also calls the constructor of the superclass (super(name, password)).
 
-    ```java
-    // Abstraction in User.java
+- Example:
 
-    abstract class User {
-        private String name;
-        private String password;
+  ```java
+  // Abstraction in User.java
 
-        public abstract boolean authenticate();
-    }
-    ```
+  abstract class User {
+      private String name;
+      private String password;
 
-    ```java
-    // Implement the authenticate method in RegisteredUser.java
+      public abstract boolean authenticate();
+  }
+  ```
 
-    class RegisteredUser extends User {
-        public RegisteredUser(String name, String password) {
-            super(name, password);
-        }
+  ```java
+  // Implement the authenticate method in RegisteredUser.java
 
-        @Override
-        public boolean authenticate() {
-            List<RegisteredUser> users = Register.getUsers();
-            for (RegisteredUser registeredUser : users) {
-                if (registeredUser.getName().equals(getName()) && registeredUser.getPassword().equals(getPassword())) {
-                    System.out.println("Login successful!");
-                    return true;
-                }
-            }
-            System.out.println("Login failed!");
-            return false;
-        }
-    }
-    ```
+  class RegisteredUser extends User {
+      public RegisteredUser(String name, String password) {
+          super(name, password);
+      }
+
+      @Override
+      public boolean authenticate() {
+          List<RegisteredUser> users = Register.getUsers();
+          for (RegisteredUser registeredUser : users) {
+              if (registeredUser.getName().equals(getName()) && registeredUser.getPassword().equals(getPassword())) {
+                  System.out.println("Login successful!");
+                  return true;
+              }
+          }
+          System.out.println("Login failed!");
+          return false;
+      }
+  }
+  ```
 
 ### Exception Handling:
 
@@ -169,37 +173,40 @@ When dealing with user input, exceptions can be thrown if the input does not mat
 
 The Register class manages the loading and saving of user information to a file (users.txt). In Java, managing the loading and saving of information to a file involves using classes from the java.io package, such as File, FileReader, FileWriter, BufferedReader, and BufferedWriter.
 
-    ```java
+- Example:
 
-    class Register {
-        private static final String FILE_PATH = "users.txt";
+  ```java
 
-        private static void saveUsers() {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
-                // ... (writing logic)
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+  class Register {
+      private static final String FILE_PATH = "users.txt";
 
-    }
-    ```
+      private static void saveUsers() {
+          try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+              // ... (writing logic)
+          } catch (IOException e) {
+              e.printStackTrace();
+          }
+      }
+
+  }
+  ```
 
 ### Anonymous Inner Class:
 
 Anonymous inner classes are often used when a short, one-time-use class is needed, such as for event handling or implementing interfaces with a small number of methods.The KeyListener in the Game class is implemented using an anonymous inner class.
 
-    ```java
-    class Game extends JFrame {
-        addKeyListener(new KeyListener() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-            // ... (keyPressed logic)
-            }
-            // ... (other KeyListener methods)
-        });
-    }
-    ```
+- Example:
+  ```java
+  class Game extends JFrame {
+      addKeyListener(new KeyListener() {
+          @Override
+          public void keyPressed(KeyEvent e) {
+          // ... (keyPressed logic)
+          }
+          // ... (other KeyListener methods)
+      });
+  }
+  ```
 
 ### Static Method:
 
@@ -207,12 +214,13 @@ They can be called on the class itself, without the need to create an instance o
 loadUsers and saveUsers are static methods in the Register class.
 They are static because they are associated with the class itself, not with instances of the class. This means you can call these methods using Register.loadUsers() and Register.saveUsers(users) without creating an instance of Register.
 
-    ```java
-    class Login {
-    private static List<RegisteredUser> users = Register.getUsers();
-    // ... (methods)
-    }
-    ```
+- Example:
+  ```java
+  class Login {
+      private static List<RegisteredUser> users = Register.getUsers();
+      // ... (methods)
+  }
+  ```
 
 ## How to Play?
 
